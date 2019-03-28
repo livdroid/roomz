@@ -36,38 +36,12 @@ abstract class ContactDatabase : RoomDatabase() {
                     "contact_database"
                 )
                     // Wipes and rebuilds instead of migrating if no Migration object.
-                    // Migration is not part of this codelab.
                     .fallbackToDestructiveMigration()
-                    .addCallback(ContactDataBaseCallback(scope))
                     .build()
                 INSTANCE = instance
-                // return instance
                 instance
             }
         }
 
-    }
-
-    private class ContactDataBaseCallback(
-
-        private val scope: CoroutineScope) : RoomDatabase.Callback() {
-        /**
-         * Override the onOpen method to populate the database.
-         * For this sample, we clear the database every time it is created or opened.
-         */
-        override fun onOpen(db: SupportSQLiteDatabase) {
-            super.onOpen(db)
-            INSTANCE?.let { database ->
-                scope.launch(Dispatchers.IO) {
-                    populateDatabase(database.contactDao())
-                }
-            }
-        }
-
-        fun populateDatabase(contactDao: ContactDao) {
-            //contactDao.deleteAll()
-            //var contact = Contact(0, "Sample Sample", "0100000000")
-            //contactDao.insert(contact)
-        }
     }
 }
