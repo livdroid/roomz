@@ -34,6 +34,10 @@ class ContactsViewModel(application: Application) : AndroidViewModel(application
         parentJob.cancel()
     }
 
+    fun deleteContact(contact: Contact) = GlobalScope.launch(Dispatchers.IO) {
+        repository.deleteContact(contact)
+    }
+
     fun deleteAll(): Boolean {
         deleteAllContacts()
         return true
@@ -42,5 +46,4 @@ class ContactsViewModel(application: Application) : AndroidViewModel(application
     fun deleteAllContacts() = GlobalScope.launch(Dispatchers.IO) {
         repository.deleteAll()
     }
-
 }

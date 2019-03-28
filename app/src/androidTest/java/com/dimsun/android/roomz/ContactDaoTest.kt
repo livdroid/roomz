@@ -77,6 +77,37 @@ class ContactDaoTest {
         }
     }
 
+    @Test
+    @Throws(Exception::class)
+    fun deleteContact() {
+
+        contactDao.getAll().observeOnce {
+            assertEquals(0, it.size)
+        }
+
+        val newContact = Contact(0, "Jean", "Test", "000000", "jeantest@test.com")
+        contactDao.insert(newContact)
+
+        contactDao.getAll().observeOnce {
+            assertEquals(1,it.size)
+        }
+
+        contactDao.delete(newContact)
+
+        contactDao.getAll().observeOnce {
+            assertEquals(0,it.size)
+        }
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun fetchedListShouldBeEmpty() {
+
+        contactDao.getAll().observeOnce {
+            assertEquals(0, it.size)
+        }
+    }
+
     @After
     fun tearDown() {
       database.close()
