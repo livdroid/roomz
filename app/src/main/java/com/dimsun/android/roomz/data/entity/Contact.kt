@@ -9,7 +9,7 @@ import android.arch.persistence.room.PrimaryKey
  * C'est une table dans la base de donnée.
  * Chaque Entity doit être ensuite referencée dans la classe @Database
  */
-@Entity(tableName ="contact_table")
+@Entity(tableName = "contact_table")
 data class Contact(
     @PrimaryKey(autoGenerate = true)
     var uid: Int,
@@ -20,4 +20,5 @@ data class Contact(
     @ColumnInfo(name = "number")
     var number: String?,
     @ColumnInfo(name = "email")
-    var email: String?)
+    var email: String?
+)

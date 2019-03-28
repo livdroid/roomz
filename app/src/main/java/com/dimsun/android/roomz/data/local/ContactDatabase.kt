@@ -1,14 +1,11 @@
 package com.dimsun.android.roomz.data.local
 
-import android.arch.persistence.db.SupportSQLiteDatabase
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import com.dimsun.android.roomz.data.entity.Contact
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 /**
  * Remplace ce que faisait l'OpenHelper SQLite

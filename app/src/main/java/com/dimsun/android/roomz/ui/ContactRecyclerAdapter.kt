@@ -9,7 +9,8 @@ import android.widget.TextView
 import com.dimsun.android.roomz.R
 import com.dimsun.android.roomz.data.entity.Contact
 
-class ContactRecyclerAdapter internal constructor(context: Context) : RecyclerView.Adapter<ContactRecyclerAdapter.ContactViewHolder>() {
+class ContactRecyclerAdapter internal constructor(context: Context) :
+    RecyclerView.Adapter<ContactRecyclerAdapter.ContactViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var contacts = emptyList<Contact>()
@@ -21,7 +22,7 @@ class ContactRecyclerAdapter internal constructor(context: Context) : RecyclerVi
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val current = contacts[position]
-       holder.bind(current)
+        holder.bind(current)
     }
 
     internal fun setContacts(contacts: List<Contact>) {

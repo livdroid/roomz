@@ -2,8 +2,8 @@ package com.dimsun.android.roomz.ui
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.dimsun.android.roomz.R
@@ -41,6 +41,6 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        button.setOnLongClickListener{ viewModel.deleteAll() }
+        button.setOnLongClickListener { viewModel.deleteAll() }
     }
 }
