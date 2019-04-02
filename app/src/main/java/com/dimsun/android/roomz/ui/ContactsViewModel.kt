@@ -9,6 +9,10 @@ import com.dimsun.android.roomz.data.local.ContactRepo
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
+//TODO : delete app reference
+// -> DI (Koin/Dagger)
+//DI tests
+//VM tests
 class ContactsViewModel(application: Application) : AndroidViewModel(application) {
 
     private var parentJob = Job()
