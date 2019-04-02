@@ -3,17 +3,22 @@ package com.dimsun.android.roomz.ui
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.ViewModel
 import com.dimsun.android.roomz.data.entity.Contact
 import com.dimsun.android.roomz.data.local.ContactDatabase
 import com.dimsun.android.roomz.data.local.ContactRepo
 import kotlinx.coroutines.*
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 //TODO : delete app reference
 // -> DI (Koin/Dagger)
 //DI tests
 //VM tests
-class ContactsViewModel(application: Application) : AndroidViewModel(application) {
+class ContactsViewModel : ViewModel() {
+
+    @Inject
+    lateinit var application: Application
 
     private var parentJob = Job()
     private val coroutineContext: CoroutineContext
