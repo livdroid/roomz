@@ -9,10 +9,11 @@ import android.support.v7.widget.RecyclerView
 import com.dimsun.android.roomz.R
 import com.dimsun.android.roomz.data.entity.Contact
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: ContactsViewModel
+    val viewModel by viewModel<ContactsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        viewModel = ViewModelProviders.of(this).get(ContactsViewModel::class.java)
         viewModel.allContacts.observe(this, Observer { contact ->
             // Update the cached copy of the words in the adapter.
             contact?.let { adapter.setContacts(it) }

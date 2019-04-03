@@ -44,4 +44,12 @@ dependencies {
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
+
+    // Koin for Android
+    implementation 'org.koin:koin-android:2.0.0-rc-2'
+    // or Koin for Lifecycle scoping
+    implementation 'org.koin:koin-android-scope:2.0.0-rc-2'
+    // or Koin for Android Architecture ViewModel
+    implementation 'org.koin:koin-android-viewmodel:2.0.0-rc-2'
+
 }
