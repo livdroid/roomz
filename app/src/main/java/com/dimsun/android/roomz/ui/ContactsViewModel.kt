@@ -1,8 +1,8 @@
 package com.dimsun.android.roomz.ui
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.dimsun.android.roomz.data.entity.Contact
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +14,9 @@ class ContactsViewModel(private val contactUseCase: ContactUseCase) : ViewModel(
 
     private var parentJob = Job()
     override val coroutineContext: CoroutineContext
-        get() = parentJob + Dispatchers.IO
+        //Datas s'affiches avec unconfined mais pas les autres.
+        //Unconfined : crash a l'ajout d'un entrée
+        get() = parentJob + Dispatchers.Unconfined
 
     private var _allContacts: LiveData<List<Contact>> = MutableLiveData()
     val allContacts: LiveData<List<Contact>> get() = _allContacts
@@ -25,7 +27,7 @@ class ContactsViewModel(private val contactUseCase: ContactUseCase) : ViewModel(
         }
     }
 
-    fun insert(contact: Contact) {
+    private fun insert(contact: Contact) {
         launch {
             contactUseCase.insertNewContact(contact)
         }

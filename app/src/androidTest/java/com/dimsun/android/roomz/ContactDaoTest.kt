@@ -1,11 +1,10 @@
 package com.dimsun.android.roomz
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
-import android.arch.persistence.room.Room
 import android.content.Context
-import android.support.test.InstrumentationRegistry
-import android.support.test.runner.AndroidJUnit4
 import android.util.Log
+import androidx.room.Room
+import androidx.test.InstrumentationRegistry
+import androidx.test.runner.AndroidJUnit4
 import com.dimsun.android.roomz.data.entity.Contact
 import com.dimsun.android.roomz.data.local.ContactDao
 import com.dimsun.android.roomz.data.local.ContactDatabase
@@ -17,9 +16,6 @@ import java.lang.Exception
 
 @RunWith(AndroidJUnit4::class)
 class ContactDaoTest {
-
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private lateinit var database: ContactDatabase
     private lateinit var contactDao: ContactDao

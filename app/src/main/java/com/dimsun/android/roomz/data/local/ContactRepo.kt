@@ -1,6 +1,6 @@
 package com.dimsun.android.roomz.data.local
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.dimsun.android.roomz.data.entity.Contact
 
 interface ContactRepo {

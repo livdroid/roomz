@@ -1,6 +1,6 @@
 package com.dimsun.android.roomz.di
 
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import com.dimsun.android.roomz.data.local.ContactDatabase
 import com.dimsun.android.roomz.data.local.ContactRepo
 import com.dimsun.android.roomz.data.local.ContactRepoImpl
@@ -17,10 +17,15 @@ val applicationModule = module {
     // ContactRepo
     single { ContactRepoImpl(get()) as ContactRepo }
     // Room Database
+
+    /*
     single {
         Room.databaseBuilder(androidContext(), ContactDatabase::class.java, "contact-db")
             .build()
+        //ContactDatabase.getDatabase(androidContext())
     }
+    */
+
 
     // contactDao
     single { get<ContactDatabase>().contactDao() }
