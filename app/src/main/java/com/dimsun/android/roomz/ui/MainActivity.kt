@@ -13,7 +13,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    val viewModel by viewModel<ContactsViewModel>()
+    private val viewModel: ContactsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,15 +30,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         button.setOnClickListener {
-            viewModel.insert(
-                Contact(
-                    0,
-                    "Jane",
-                    "Doe",
-                    "09 02 03 02 92",
-                    "jane.doe@ada.com"
-                )
-            )
+            viewModel.insertSampleContact()
         }
 
         button.setOnLongClickListener { viewModel.deleteAll() }

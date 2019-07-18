@@ -1,45 +1,40 @@
 package com.dimsun.android.roomz.ui
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
 import com.dimsun.android.roomz.data.entity.Contact
-import com.dimsun.android.roomz.data.local.ContactDatabase
-import com.dimsun.android.roomz.data.local.ContactRepo
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-//TODO : delete app reference
-// -> DI (Koin/Dagger)
-//DI tests
-//VM tests
-class ContactsViewModel(application: Application) : AndroidViewModel(application) {
+class ContactsViewModel(private val contactUseCase: ContactUseCase) : ViewModel(), CoroutineScope {
 
     private var parentJob = Job()
-    private val coroutineContext: CoroutineContext
-        get() = parentJob + Dispatchers.Main
-    private val scope = CoroutineScope(coroutineContext)
+    override val coroutineContext: CoroutineContext
+        get() = parentJob + Dispatchers.IO
 
-    private val repository: ContactRepo
-    val allContacts: LiveData<List<Contact>>
+    private var _allContacts: LiveData<List<Contact>> = MutableLiveData()
+    val allContacts: LiveData<List<Contact>> get() = _allContacts
 
     init {
-        val contactDao = ContactDatabase.getDatabase(application, scope).contactDao()
-        repository = ContactRepo(contactDao)
-        allContacts = repository.allContacts
+        launch {
+            _allContacts = contactUseCase.getAllContacts()
+        }
     }
 
-    fun insert(contact: Contact): Job = GlobalScope.launch(Dispatchers.IO) {
-        repository.insert(contact)
+    fun insert(contact: Contact) {
+        launch {
+            contactUseCase.insertNewContact(contact)
+        }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        parentJob.cancel()
-    }
-
-    fun deleteContact(contact: Contact) = GlobalScope.launch(Dispatchers.IO) {
-        repository.deleteContact(contact)
+    fun deleteContact(contact: Contact) {
+        launch {
+            contactUseCase.deleteContact(contact)
+        }
     }
 
     fun deleteAll(): Boolean {
@@ -47,7 +42,24 @@ class ContactsViewModel(application: Application) : AndroidViewModel(application
         return true
     }
 
-    fun deleteAllContacts() = GlobalScope.launch(Dispatchers.IO) {
-        repository.deleteAll()
+    private fun deleteAllContacts()  {
+        launch {
+            contactUseCase.deleteAll()
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        parentJob.cancel()
+    }
+
+    fun insertSampleContact() {
+        insert( Contact(
+            0,
+            "Jane",
+            "Doe",
+            "09 02 03 02 92",
+            "jane.doe@ada.com"
+        ))
     }
 }
