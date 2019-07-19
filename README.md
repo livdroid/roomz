@@ -1,6 +1,6 @@
-[![Generic badge](https://img.shields.io/badge/<OS>-<ANDROID>-<COLOR>.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/<Maintained>-<Yes>-<COLOR>.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/<Dogs>-<Yes>-<COLOR>.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/OS-Android-<COLOR>.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Maintained>-Yes-<COLOR>.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Langage-Kotlin-<COLOR>.svg)](https://shields.io/)
 
 # Roomz
 Just some Room/Coroutines/ViewModel/Koin demo app always meant to be unfinished and trying to be up to date with all that fancy new best pratices.
