@@ -14,15 +14,18 @@ import com.dimsun.android.roomz.data.entity.Contact
 @Dao
 interface ContactDao {
 
-    @Query("SELECT * FROM contact_table")
-    suspend fun getAll(): LiveData<List<Contact>>
+    //@Query("SELECT * FROM contact_table")
+    //suspend fun getAll(): LiveData<List<Contact>>
 
     @Delete
-    suspend fun delete(contact: Contact)
-
-    @Insert
-    suspend fun insert(contact: Contact)
+    fun delete(contact: Contact)
 
     @Query("DELETE FROM contact_table")
-    suspend fun deleteAll()
+    fun deleteAll()
+
+    @Insert
+    fun insert(contact: Contact)
+
+    @Query("SELECT * FROM contact_table")
+    fun getAll(): LiveData<List<Contact>>
 }

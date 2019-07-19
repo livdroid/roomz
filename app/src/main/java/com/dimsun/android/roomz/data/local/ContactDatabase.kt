@@ -13,7 +13,7 @@ import com.dimsun.android.roomz.data.entity.Contact
  * Une instance est déjà couteuse.
  */
 
-@Database(entities = [Contact::class], version = 1)
+@Database(entities = [Contact::class], version = 1, exportSchema = false)
 abstract class ContactDatabase : RoomDatabase() {
 
     abstract fun contactDao(): ContactDao
@@ -22,19 +22,20 @@ abstract class ContactDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: ContactDatabase? = null
 
-        fun getDatabase(context: Context): ContactDatabase {
-            val tempInstance = INSTANCE
-            if (tempInstance != null) {
-                return tempInstance
-            }
-            synchronized(this) {
+        fun getDatabase(
+            context: Context
+        ): ContactDatabase {
+            return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ContactDatabase::class.java,
-                    "contact_database"
-                ).build()
+                    "contact_db"
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
-                return instance
+                // return instance
+                instance
             }
         }
     }

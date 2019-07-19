@@ -11,7 +11,8 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: ContactsViewModel by viewModel()
+    private val model: ContactsViewModel  by viewModel()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,15 +23,15 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        viewModel.allContacts.observe(this, Observer { contact ->
+        model.allContacts.observe(this, Observer { contact ->
             // Update the cached copy of the words in the adapter.
             if(contact != null) { adapter.setContacts(contact) }
         })
 
         button.setOnClickListener {
-            viewModel.insertSampleContact()
+            model.insertSampleContact()
         }
 
-        button.setOnLongClickListener { viewModel.deleteAll() }
+        button.setOnLongClickListener { model.deleteAll() }
     }
 }
