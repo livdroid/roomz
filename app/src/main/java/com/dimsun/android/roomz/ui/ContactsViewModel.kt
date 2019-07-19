@@ -40,7 +40,7 @@ class ContactsViewModel(private val contactUseCase: ContactUseCase) : ViewModel(
         return true
     }
 
-    private fun deleteAllContacts()  {
+    private fun deleteAllContacts() {
         launch {
             contactUseCase.deleteAll()
         }
@@ -52,12 +52,14 @@ class ContactsViewModel(private val contactUseCase: ContactUseCase) : ViewModel(
     }
 
     fun insertSampleContact() {
-        insert( Contact(
-            0,
-            "Jane",
-            "Doe",
-            "09 02 03 02 92",
-            "jane.doe@ada.com"
-        ))
+        insert(
+            Contact(
+                0,
+                "Jane",
+                "Doe",
+                "09 02 03 02 92",
+                "jane.doe@ada.com"
+            )
+        )
     }
 }

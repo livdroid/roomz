@@ -1,10 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 ext {
-    roomVersion = '2.1.0'
-    archLifecycleVersion = '2.0.0'
-    coroutines = '0.26.1'
-    coroutines = '0.26.1'
-    koin_version = '2.0.1'
+    room = '2.2.0-alpha01'
+    archLifecycle = '2.0.0'
+    coroutines = '1.2.1'
+    koin = '2.0.1'
 }
 
 buildscript {
@@ -12,7 +11,7 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven { url "http://jcenter.bintray.com"}
+        maven { url "http://jcenter.bintray.com" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.2'
@@ -26,7 +25,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        jcenter{ url "http://jcenter.bintray.com/" }
+        jcenter { url "http://jcenter.bintray.com/" }
     }
 }
 
