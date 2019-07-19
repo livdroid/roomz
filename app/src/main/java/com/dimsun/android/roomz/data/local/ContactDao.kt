@@ -1,27 +1,28 @@
 package com.dimsun.android.roomz.data.local
 
-import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.*
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
 import com.dimsun.android.roomz.data.entity.Contact
 
 /**
  * @Dao
- *
  *Effectue les requetes de lecture/ecriture de la base de donnée.
- *
  */
 @Dao
 interface ContactDao {
 
     @Query("SELECT * FROM contact_table")
-    fun getAll(): LiveData<List<Contact>>
+    suspend fun getAll(): LiveData<List<Contact>>
 
     @Delete
-    fun delete(contact: Contact)
+    suspend fun delete(contact: Contact)
 
     @Insert
-    fun insert(contact: Contact)
+    suspend fun insert(contact: Contact)
 
     @Query("DELETE FROM contact_table")
-    fun deleteAll()
+    suspend fun deleteAll()
 }

@@ -1,13 +1,11 @@
 package com.dimsun.android.roomz.ui
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dimsun.android.roomz.R
-import com.dimsun.android.roomz.data.entity.Contact
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -26,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.allContacts.observe(this, Observer { contact ->
             // Update the cached copy of the words in the adapter.
-            contact?.let { adapter.setContacts(it) }
+            if(contact != null) { adapter.setContacts(contact) }
         })
 
         button.setOnClickListener {

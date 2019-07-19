@@ -1,6 +1,6 @@
 package com.dimsun.android.roomz.util
 
-import android.arch.lifecycle.*
+import androidx.lifecycle.*
 
 fun <T> LiveData<T>.observeOnce(onChangeHandler: (T) -> Unit) {
     val observer = OneTimeObserver(handler = onChangeHandler)
