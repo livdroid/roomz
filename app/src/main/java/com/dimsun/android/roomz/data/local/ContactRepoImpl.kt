@@ -9,7 +9,7 @@ import com.dimsun.android.roomz.data.entity.Contact
  */
 class ContactRepoImpl(private val contactDao: ContactDao) : ContactRepo {
 
-    override suspend fun getAll(): LiveData<List<Contact>> = contactDao.getAll()
+    override fun getAll(): LiveData<List<Contact>> = contactDao.getAll()
 
     override suspend fun insert(contact: Contact) {
         contactDao.insert(contact)

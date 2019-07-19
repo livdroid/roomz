@@ -15,7 +15,7 @@ class ContactUseCase(context: Context) {
         repo = ContactRepoImpl(contactDao)
     }
 
-    suspend fun getAllContacts(): LiveData<List<Contact>> {
+    fun getAllContacts(): LiveData<List<Contact>> {
         return repo.getAll()
     }
 
