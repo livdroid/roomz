@@ -13,12 +13,11 @@ Room 2.0
 
 ## Todo
 
+Currently working on the insert-new-contact branch
+Finish adding contact feature.
+-> string DQE
+
 Update tests with the migration.
-
-Add some fancy MotionLayout, POs love some animations.
-
+Add some fancy MotionLayout.
 UI tests, could be fun.
-
-Firebase remote config because why not.
-
 Room x Coroutines when you don't have to try 3000 lib versions to make it work (:
