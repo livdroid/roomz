@@ -26,12 +26,6 @@ class MainViewModel(private val contactUseCase: ContactUseCase,
         _allContacts = contactUseCase.getAllContacts()
     }
 
-    private fun insert(contact: Contact) {
-        launch {
-            contactUseCase.insertNewContact(contact)
-        }
-    }
-
     fun deleteContact(contact: Contact) {
         launch {
             contactUseCase.deleteContact(contact)
@@ -52,18 +46,6 @@ class MainViewModel(private val contactUseCase: ContactUseCase,
     override fun onCleared() {
         super.onCleared()
         parentJob.cancel()
-    }
-
-    fun insertSampleContact() {
-        insert(
-            Contact(
-                0,
-                "Jane",
-                "Doe",
-                "09 02 03 02 92",
-                "jane.doe@ada.com"
-            )
-        )
     }
 
     fun showInsertView() {
