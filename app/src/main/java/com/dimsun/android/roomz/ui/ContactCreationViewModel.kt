@@ -24,5 +24,4 @@ class ContactCreationViewModel(private val contactUseCase: ContactUseCase): View
             contactUseCase.insertNewContact(firstName, lastName, number, email)
         }
     }
-
 }
