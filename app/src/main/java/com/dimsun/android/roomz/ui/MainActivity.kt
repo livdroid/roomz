@@ -11,8 +11,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val model: ContactsViewModel  by viewModel()
-
+    private val model: MainViewModel  by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         button.setOnClickListener {
-            model.insertSampleContact()
+            model.showInsertView()
         }
 
         button.setOnLongClickListener { model.deleteAll() }

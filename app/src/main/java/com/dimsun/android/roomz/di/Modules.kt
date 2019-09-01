@@ -1,23 +1,22 @@
 package com.dimsun.android.roomz.di
 
-import android.app.Application
-import android.content.Context
-import androidx.room.Room
-import com.dimsun.android.roomz.RoomzApplication
-import com.dimsun.android.roomz.data.local.ContactDatabase
-import com.dimsun.android.roomz.data.local.ContactRepo
-import com.dimsun.android.roomz.data.local.ContactRepoImpl
+import com.dimsun.android.roomz.ui.ContactCreationViewModel
 import com.dimsun.android.roomz.ui.ContactUseCase
-import com.dimsun.android.roomz.ui.ContactsViewModel
+import com.dimsun.android.roomz.ui.MainViewModel
+import com.dimsun.android.roomz.util.Navigation
+import com.dimsun.android.roomz.util.NavigationImpl
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
-import org.koin.core.module.Module
 import org.koin.dsl.module
 
 val applicationModule = module {
 
-    viewModel { ContactsViewModel(get()) }
+    viewModel { MainViewModel(get(), get()) }
+    viewModel { ContactCreationViewModel(get()) }
+
     single { ContactUseCase(androidContext()) }
+    single <Navigation> { NavigationImpl(androidContext())}
+
 
     // Room Database
 
