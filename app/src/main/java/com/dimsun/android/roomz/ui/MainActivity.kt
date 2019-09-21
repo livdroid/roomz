@@ -23,14 +23,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         model.allContacts.observe(this, Observer { contact ->
-            // Update the cached copy of the words in the adapter.
             if(contact != null) { adapter.setContacts(contact) }
         })
 
-        button.setOnClickListener {
-            model.showInsertView()
-        }
-
+        button.setOnClickListener { model.showInsertView() }
         button.setOnLongClickListener { model.deleteAll() }
     }
 }
