@@ -1,7 +1,5 @@
 [![Generic badge](https://img.shields.io/badge/OS-Android-<COLOR>.svg)](https://shields.io/)
-
 [![Generic badge](https://img.shields.io/badge/Maintained-Yes-<COLOR>.svg)](https://shields.io/)
-
 [![Generic badge](https://img.shields.io/badge/Langage-Kotlin-<COLOR>.svg)](https://shields.io/)
 
 # Roomz
