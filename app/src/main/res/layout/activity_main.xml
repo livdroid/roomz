@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DEDEDE"
+        android:background="#FFFFFF"
         tools:context=".ui.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -30,11 +30,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-    <View
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/white_gradient"
-            app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

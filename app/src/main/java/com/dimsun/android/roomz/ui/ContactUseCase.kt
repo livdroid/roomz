@@ -19,8 +19,17 @@ class ContactUseCase(context: Context) {
         return repo.getAll()
     }
 
-    suspend fun insertNewContact(contact: Contact) {
-        repo.insert(contact)
+    suspend fun insertNewContact(firstName: String,
+                                 lastName: String,
+                                 number: String,
+                                 email: String) {
+        repo.insert(Contact(
+            firstname = firstName,
+            lastname = lastName,
+            number = number,
+            email = email,
+            uid = 0
+        ))
     }
 
     suspend fun deleteContact(contact: Contact) {

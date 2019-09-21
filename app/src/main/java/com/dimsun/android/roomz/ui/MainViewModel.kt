@@ -4,13 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dimsun.android.roomz.data.entity.Contact
+import com.dimsun.android.roomz.util.Navigation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class ContactsViewModel(private val contactUseCase: ContactUseCase) : ViewModel(), CoroutineScope {
+class MainViewModel(private val contactUseCase: ContactUseCase,
+                        private val navigation: Navigation
+) : ViewModel(), CoroutineScope {
 
     private var parentJob = Job()
     override val coroutineContext: CoroutineContext
@@ -21,12 +24,6 @@ class ContactsViewModel(private val contactUseCase: ContactUseCase) : ViewModel(
 
     init {
         _allContacts = contactUseCase.getAllContacts()
-    }
-
-    private fun insert(contact: Contact) {
-        launch {
-            contactUseCase.insertNewContact(contact)
-        }
     }
 
     fun deleteContact(contact: Contact) {
@@ -51,15 +48,7 @@ class ContactsViewModel(private val contactUseCase: ContactUseCase) : ViewModel(
         parentJob.cancel()
     }
 
-    fun insertSampleContact() {
-        insert(
-            Contact(
-                0,
-                "Jane",
-                "Doe",
-                "09 02 03 02 92",
-                "jane.doe@ada.com"
-            )
-        )
+    fun showInsertView() {
+        navigation.goToInsertActivity()
     }
 }
