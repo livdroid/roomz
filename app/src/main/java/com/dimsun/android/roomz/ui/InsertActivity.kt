@@ -3,11 +3,9 @@ package com.dimsun.android.roomz.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.dimsun.android.roomz.R
+import com.dimsun.android.roomz.util.*
 import kotlinx.android.synthetic.main.activity_insert.*
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.util.regex.Pattern
-import android.util.Patterns
-import androidx.appcompat.widget.AppCompatEditText
 
 
 class InsertActivity : AppCompatActivity() {
@@ -44,37 +42,4 @@ class InsertActivity : AppCompatActivity() {
                 && insert_email_et.text.isValidEmail()
                 && insert_number_et.text.isValidNumber()
     }
-
-}
-
-private fun AppCompatEditText?.toNameError() {
-    if(!this?.text.isValidName()) {
-        this?.error = "This field cannot be empty"
-    }
-}
-
-private fun AppCompatEditText?.toEmailError() {
-    if(!this?.text.isValidEmail()) {
-        this?.error = "This field cannot be empty"
-    }
-}
-
-private fun AppCompatEditText?.toPhoneError() {
-    if(!this?.text.isValidNumber()) {
-        this?.error = "This field cannot be empty"
-    }
-}
-
-private fun CharSequence?.isValidNumber() : Boolean {
-    val patternPhone = Pattern.compile("^([0-9]{10})")
-    return patternPhone.matcher(this).matches()
-}
-
-private fun CharSequence?.isValidEmail()  : Boolean{
-    val patternEmail = Patterns.EMAIL_ADDRESS
-    return patternEmail.matcher(this).matches()
-}
-
-private fun CharSequence?.isValidName() : Boolean {
-    return this != null && this.isNotEmpty()
 }
