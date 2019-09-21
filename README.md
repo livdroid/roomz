@@ -9,13 +9,8 @@ Just some Room/Coroutines/ViewModel/Koin demo app always meant to be unfinished 
 AndroidX
 Room 2.0
 
-## Todo
+## Screens
 
-Currently working on the insert-new-contact branch
-Finish adding contact feature.
--> string DQE
-
-Update tests with the migration.
-Add some fancy MotionLayout.
-UI tests, could be fun.
-Room x Coroutines when you don't have to try 3000 lib versions to make it work (:
+![alt text](https://github.com/livdroid/roomz/blob/master/screencapture/roomz_insertempty.png?raw=false)
+![alt text](https://github.com/livdroid/roomz/blob/master/screencapture/roomz_inserterror.png?raw=false)
+![alt text](https://github.com/livdroid/roomz/blob/master/screencapture/roomz_mainactivity.png?raw=false)
