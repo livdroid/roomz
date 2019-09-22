@@ -9,14 +9,15 @@ import com.dimsun.android.roomz.data.entity.Contact
 import com.dimsun.android.roomz.data.local.ContactDao
 import com.dimsun.android.roomz.data.local.ContactDatabase
 import com.dimsun.android.roomz.util.observeOnce
-import junit.framework.Assert.assertEquals
-import org.junit.*
+import com.dimsun.android.roomz.util.observeOnceAsync
+import org.junit.After
+import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Test
 import org.junit.runner.RunWith
-import java.lang.Exception
 
 /*
-    ***** Not Working Anymore *****
-    Not updated since androidx and room 2 migration
+    TODO : Almost fixed, needs coroutine work
  */
 
 @RunWith(AndroidJUnit4::class)
@@ -52,36 +53,35 @@ class ContactDaoTest {
         contactDao.insert(newContact)
 
         contactDao.getAll().observeOnce {
-            assertEquals(1,it.size)
+            assertEquals(1, it.size)
         }
     }
 
     @Test
     @Throws(Exception::class)
     fun deleteAll() {
-
         contactDao.getAll().observeOnce {
             assertEquals(0, it.size)
         }
 
         val newContact = Contact(0, "Jean", "Test", "000000", "jeantest@test.com")
+
         contactDao.insert(newContact)
 
         contactDao.getAll().observeOnce {
-            assertEquals(1,it.size)
+            assertEquals(1, it.size)
         }
 
         contactDao.deleteAll()
 
         contactDao.getAll().observeOnce {
-            assertEquals(0,it.size)
+            assertEquals(0, it.size)
         }
     }
 
     @Test
     @Throws(Exception::class)
     fun deleteContact() {
-
         contactDao.getAll().observeOnce {
             assertEquals(0, it.size)
         }
@@ -90,13 +90,13 @@ class ContactDaoTest {
         contactDao.insert(newContact)
 
         contactDao.getAll().observeOnce {
-            assertEquals(1,it.size)
+            assertEquals(1, it.size)
         }
 
         contactDao.delete(newContact)
 
         contactDao.getAll().observeOnce {
-            assertEquals(0,it.size)
+            assertEquals(0, it.size)
         }
     }
 
@@ -104,13 +104,13 @@ class ContactDaoTest {
     @Throws(Exception::class)
     fun fetchedListShouldBeEmpty() {
 
-        contactDao.getAll().observeOnce {
+        contactDao.getAll().observeOnceAsync {
             assertEquals(0, it.size)
         }
     }
 
     @After
     fun tearDown() {
-      database.close()
+        database.close()
     }
 }

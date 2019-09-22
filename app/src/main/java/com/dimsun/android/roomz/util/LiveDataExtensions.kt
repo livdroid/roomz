@@ -1,6 +1,15 @@
 package com.dimsun.android.roomz.util
 
 import androidx.lifecycle.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
+fun <T> LiveData<T>.observeOnceAsync(onChangeHandler: (T) -> Unit) {
+    val observer = OneTimeObserver(handler = onChangeHandler)
+    GlobalScope.launch {
+        observe(observer, observer)
+    }
+}
 
 fun <T> LiveData<T>.observeOnce(onChangeHandler: (T) -> Unit) {
     val observer = OneTimeObserver(handler = onChangeHandler)
