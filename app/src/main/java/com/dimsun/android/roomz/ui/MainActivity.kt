@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             if(contact != null) { adapter.setContacts(contact) }
         })
 
-        button.setOnClickListener { model.showInsertView() }
-        button.setOnLongClickListener { model.deleteAll() }
+        main_button.setOnClickListener { model.showInsertView() }
+        main_button.setOnLongClickListener { model.deleteAll() }
     }
 }
