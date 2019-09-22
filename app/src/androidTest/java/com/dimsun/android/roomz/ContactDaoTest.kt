@@ -3,8 +3,8 @@ package com.dimsun.android.roomz
 import android.content.Context
 import android.util.Log
 import androidx.room.Room
-import androidx.test.InstrumentationRegistry
-import androidx.test.runner.AndroidJUnit4
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.dimsun.android.roomz.data.entity.Contact
 import com.dimsun.android.roomz.data.local.ContactDao
 import com.dimsun.android.roomz.data.local.ContactDatabase
@@ -18,7 +18,7 @@ import java.lang.Exception
     ***** Not Working Anymore *****
     Not updated since androidx and room 2 migration
  */
-/*
+
 @RunWith(AndroidJUnit4::class)
 class ContactDaoTest {
 
@@ -29,7 +29,7 @@ class ContactDaoTest {
     @Test
     @Before
     fun setup() {
-        val context: Context = InstrumentationRegistry.getTargetContext()
+        val context: Context = InstrumentationRegistry.getInstrumentation().targetContext
         try {
             database = Room.inMemoryDatabaseBuilder(context, ContactDatabase::class.java)
                 .allowMainThreadQueries()
@@ -114,4 +114,3 @@ class ContactDaoTest {
       database.close()
     }
 }
-        */
