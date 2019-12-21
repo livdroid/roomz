@@ -7,6 +7,6 @@ Room 2.0
 
 ## Screens
 
-<img src="https://github.com/livdroid/roomz/blob/master/screencapture/roomz_insertempty.png" alt="drawing" width="200"/>
-<img src="ttps://github.com/livdroid/roomz/blob/master/screencapture/roomz_inserterror.png" alt="drawing" width="200"/>
-<img src="https://github.com/livdroid/roomz/blob/master/screencapture/roomz_mainactivity.png" alt="drawing" width="200"/>
+<img src="https://github.com/livdroid/roomz/blob/master/screencapture/roomz_insertempty.png" alt="drawing" width="250"/>
+<img src="https://github.com/livdroid/roomz/blob/master/screencapture/roomz_inserterror.png" alt="drawing" width="250"/>
+<img src="https://github.com/livdroid/roomz/blob/master/screencapture/roomz_mainactivity.png" alt="drawing" width="250"/>
