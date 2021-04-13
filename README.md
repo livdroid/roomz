@@ -4,6 +4,8 @@ Just some Room/Coroutines/ViewModel/Koin demo app.
 ## Libraries
 AndroidX
 Room 2.0
+Unit test
+UI test
 
 ## Screens
 
